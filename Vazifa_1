@@ -1,0 +1,33 @@
+from PyQt5.QtGui import QPalette, QColor
+from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QVBoxLayout
+
+a = QApplication([])
+
+
+class Color(QWidget):
+    def __init__(self, color):
+        super().__init__()
+        self.setAutoFillBackground(True)
+        palette = self.palette()
+        palette.setColor(QPalette.Window, QColor(color))
+        self.setPalette(palette)
+
+
+class Menu(QWidget):
+    def __init__(self):
+        super().__init__()
+        self.v1 = QVBoxLayout()
+        self.setLayout(self.v1)
+
+        self.c1 = Color("#F0F8FF")
+        self.c2 = Color("#FFDAB9")
+        self.c3 = Color("#FFE4E1")
+
+        self.v1.addWidget(self.c1)
+        self.v1.addWidget(self.c2)
+        self.v1.addWidget(self.c3)
+
+
+menu = Menu()
+menu.show()
+a.exec_()
